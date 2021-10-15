@@ -1,4 +1,5 @@
-DSN := mysql://root:yourpasswd@tcp(127.0.0.1:3306)/user_service?multiStatements=true
+CONFIG_FILE ?= ./configs/config.yaml
+DSN ?= $(shell sed -n 's/^dsn:[[:space:]]\(.*\)/\1/p' $(CONFIG_FILE))
 MIGRATE := migrate -database "$(DSN)" -path db/
 
 run:
