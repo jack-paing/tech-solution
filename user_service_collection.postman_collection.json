@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "bd62d4d3-eb83-4107-a5e8-1d3fec4800ff",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "Create Card",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"card name 1\",\n    \"description\": \"Test card\",\n    \"daily_limit\": 100.50,\n    \"monthly_limit\":3000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/cards",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Card",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"monthly_limit\":1000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/cards/{{CardId}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"cards",
+						"{{CardId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all cards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/cards",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"cards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get card by CardId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/cards/{{cardId}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"cards",
+						"{{cardId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete card",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/cards/{{CardId}}",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"cards",
+						"{{CardId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "CardId",
+			"value": "{{cardId}}"
+		}
+	]
+}

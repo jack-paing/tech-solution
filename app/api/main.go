@@ -47,6 +47,10 @@ func setupRouter(db *sqlx.DB) *gin.Engine {
 	cardService := card.NewService(db)
 	cardHandler := card.NewHandler(cardService)
 	r.POST("/cards", cardHandler.Create)
+	r.GET("/cards", cardHandler.Get)
+	r.GET("/cards/:cardId", cardHandler.GetByCardId)
+	r.DELETE("/cards/:cardId", cardHandler.Delete)
+	r.PATCH("/cards/:cardId", cardHandler.Update)
 
 	return r
 }
