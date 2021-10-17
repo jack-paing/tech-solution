@@ -1,4 +1,4 @@
-CREATE TABLE `user` (
+CREATE TABLE `users` (
     `user_id` VARCHAR(36) NOT NULL,
     `first_name` VARCHAR(32) NOT NULL,
     `last_name` VARCHAR(32) NOT NULL,
@@ -7,7 +7,7 @@ CREATE TABLE `user` (
     PRIMARY KEY (`user_id`)
 );
 
-CREATE TABLE `wallet` (
+CREATE TABLE `wallets` (
     `wallet_id` VARCHAR(36) NOT NULL,
     `name` VARCHAR(32) NOT NULL,
     `description` VARCHAR(32),
@@ -15,15 +15,15 @@ CREATE TABLE `wallet` (
     `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`wallet_id`)
 );
- 
-CREATE TABLE `user_wallet` (
+
+CREATE TABLE `user_wallets` (
     `user_id` VARCHAR(36) NOT NULL,
     `wallet_id` VARCHAR(36) NOT NULL,
     `balance` DECIMAL(12,2) NOT NULL,
     PRIMARY KEY (`user_id`, `wallet_id`)
 );
 
-CREATE TABLE `card` (
+CREATE TABLE `cards` (
     `card_id` VARCHAR(36) NOT NULL,
     `name` VARCHAR(32) NOT NULL,
     `description` VARCHAR(32),
@@ -34,14 +34,14 @@ CREATE TABLE `card` (
     PRIMARY KEY (`card_id`)
 );
 
-CREATE TABLE `wallet_card` (
+CREATE TABLE `wallet_cards` (
     `user_id` VARCHAR(36) NOT NULL,
     `wallet_id` VARCHAR(36) NOT NULL,
     `balance` DECIMAL(12,2) NOT NULL,
     PRIMARY KEY (`user_id`, `wallet_id`)
 );
 
-CREATE TABLE `team` (
+CREATE TABLE `teams` (
     `team_id` VARCHAR(36) NOT NULL,
     `name` VARCHAR(32) NOT NULL,
     `description` VARCHAR(32),
@@ -53,7 +53,7 @@ CREATE TABLE `team` (
     PRIMARY KEY (`team_id`)
 );
 
-CREATE TABLE `user_team` (
+CREATE TABLE `user_teams` (
     `user_id` VARCHAR(36) NOT NULL,
     `team_id` VARCHAR(36) NOT NULL,
     PRIMARY KEY (`team_id`,`user_id`)
