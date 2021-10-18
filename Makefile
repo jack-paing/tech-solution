@@ -3,6 +3,7 @@ DSN ?= $(shell sed -n 's/^dsn:[[:space:]]\(.*\)/\1/p' $(CONFIG_FILE))
 MIGRATE := migrate -database mysql://"$(DSN)" -path db/
 TEST_DSN ?= $(shell sed -n 's/^test_dsn:[[:space:]]\(.*\)/\1/p' $(CONFIG_FILE))
 TEST_MIGRATE := migrate -database mysql://"$(TEST_DSN)" -path db/
+UNIT_TEST_DIR=$(shell go list ./... | grep -v /app | grep -v internal/config | grep -v internal/health)
 
 run:
 	go run ./app/api
@@ -23,3 +24,7 @@ mock:
 
 setup-test-db:
 	@$(TEST_MIGRATE) up
+
+unit-test:
+	go get gotest.tools/gotestsum
+	gotestsum --jsonfile report.json fmt -race -v $(UNIT_TEST_DIR)

@@ -65,6 +65,27 @@ func TestGetCards(t *testing.T) {
 	}
 }
 
+func TestGetByCardId(t *testing.T) {
+	tests := []struct {
+		name    string
+		addCard *model.Card
+		cardId  string
+		error   error
+	}{
+		{"Card Update", &model.Card{CardID: "585cbfc0-41dd-4e9f-b7aa-3f32a2ba4ada", Name: ut.PtrString("Testing name"), DailyLimit: ut.PtrFloat(100.50), MonthlyLimit: ut.PtrFloat(3000.50)}, "585cbfc0-41dd-4e9f-b7aa-3f32a2ba4ada", nil},
+	}
+	ctx := context.TODO()
+	db := setupCardRepoDB(t)
+	r := NewCard(db)
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			r.Create(ctx, tt.addCard)
+			_, err := r.GetByCardId(ctx, tt.cardId)
+
+			assert.EqualValues(t, err, tt.error)
+		})
+	}
+}
 func TestUpdateCard(t *testing.T) {
 	tests := []struct {
 		name    string

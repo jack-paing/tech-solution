@@ -22,7 +22,7 @@ func main() {
 	db, err := getDb(config.DSN)
 	if err != nil {
 		fmt.Println(err)
-		log.Error("Error in loading %v", err)
+		log.Errorf("Error in loading %v", err)
 	}
 	r := setupRouter(db)
 	r.Run(fmt.Sprintf(":%v", config.Port))

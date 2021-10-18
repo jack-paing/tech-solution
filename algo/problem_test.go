@@ -1,7 +1,7 @@
 package algo_test
 
 import (
-	"spenmo-tech/algo"
+	"tech-solution/algo"
 	"testing"
 )
 
