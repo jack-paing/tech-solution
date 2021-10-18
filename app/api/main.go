@@ -9,6 +9,7 @@ import (
 	"tech-solution/internal/card"
 	"tech-solution/internal/config"
 	"tech-solution/internal/health"
+	"tech-solution/internal/repo"
 )
 
 func main() {
@@ -44,7 +45,8 @@ func setupRouter(db *sqlx.DB) *gin.Engine {
 
 	r.GET("/health", health.Check)
 
-	cardService := card.NewService(db)
+	cardRepo := repo.NewCard(db)
+	cardService := card.NewService(cardRepo)
 	cardHandler := card.NewHandler(cardService)
 	r.POST("/cards", cardHandler.Create)
 	r.GET("/cards", cardHandler.Get)

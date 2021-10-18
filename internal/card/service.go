@@ -3,7 +3,6 @@ package card
 import (
 	"context"
 	"github.com/google/uuid"
-	"github.com/jmoiron/sqlx"
 	"tech-solution/internal/repo"
 	"tech-solution/model"
 )
@@ -17,12 +16,12 @@ type Service interface {
 }
 
 type service struct {
-	repo *repo.Card
+	repo repo.CardRepo
 }
 
-func NewService(db *sqlx.DB) Service {
+func NewService(repo repo.CardRepo) Service {
 	return &service{
-		repo: repo.NewCard(db),
+		repo: repo,
 	}
 }
 

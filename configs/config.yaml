@@ -1,2 +1,3 @@
 port: 8081
 dsn: root:yourpasswd@tcp(127.0.0.1:3306)/user_service?multiStatements=true&parseTime=true
+test_dsn: root:yourpasswd@tcp(127.0.0.1:3306)/user_service_test?multiStatements=true&parseTime=true

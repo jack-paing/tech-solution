@@ -29,7 +29,7 @@ func (h *handler) Create(c *gin.Context) {
 	var card *model.Card
 	if err := c.ShouldBindJSON(&card); err != nil {
 		log.Errorf("JSON Bind Error %v", err)
-		c.JSON(http.StatusBadRequest, "Invalid data model")
+		c.JSON(http.StatusBadRequest, "Invalid request body")
 		return
 	}
 
