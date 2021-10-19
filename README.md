@@ -30,10 +30,10 @@ Sample Schema is in db/schema.sql
 
 ### How to run the application
 
-####Pre-requisite
+#### Pre-requisite
 Mysql running with database created
 
-####Steps to run the application
+#### Steps to run the application
 1.Change necessary database information in config.yaml
 
 2.`make migrate` for creating tables
@@ -42,7 +42,7 @@ Mysql running with database created
 
 4.`user_service_collection.postman-collection.json` includes CRUD for cards
 
-####Steps to run tests
+#### Steps to run tests
 1.`make setup-test-db` for setting up test tables
 
 2.`make unit-test` for running unit tests
